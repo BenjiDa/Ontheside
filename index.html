@@ -1,0 +1,324 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>On the Side — Official Site</title>
+  <meta name="description" content="On the Side — Americana, roots, and rock ’n’ roll from Sonoma & Marin. Live shows, music, photos, and contact." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0b0c; --fg:#f3f4f6; --muted:#b7b9c0; --brand:#f59e0b; --card:#141416; --line:#1f2125;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+    header{position:sticky;top:0;z-index:30;background:rgba(11,11,12,.7);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{font-weight:800;letter-spacing:.5px}
+    .nav a{padding:10px 12px;border-radius:10px}
+    .nav a:hover{background:#17181b}
+    .cta{background:var(--brand);color:#111827;font-weight:700;padding:10px 14px;border-radius:12px}
+    .cta:hover{filter:brightness(.95)}
+
+    /* Fix nav button overlap on mobile */
+    @media (max-width: 600px) {
+      .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        height: auto;
+        padding: 8px 0;
+      }
+      .nav a {
+        margin: 4px;
+        display: inline-block;
+      }
+    }
+
+    .hero {
+      position: relative;
+    }
+
+    .hero .bg {
+      position: absolute;
+      inset: 0;
+      background: url('ontheside.jpg') center top / cover no-repeat;
+      filter: brightness(.8);
+    }
+
+    .hero .shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,.06),
+        rgba(11,11,12,1) 82%
+      );
+    }
+
+    .hero .inner {
+      position: relative;
+      padding: 200px 0 80px; /* ⬅️ moved content down */
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.05;
+      margin: 0 0 10px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 10px 0 24px;
+      font-size: 18px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: #1d1f24;
+      border: 1px solid var(--line);
+    }
+
+    .btn:hover {
+      background: #23262b;
+    }
+
+    section{padding:64px 0;border-top:1px solid var(--line)}
+    h2{font-size:28px;margin:0 0 18px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:18px}
+    @media(min-width:900px){.grid-2{grid-template-columns:1.1fr .9fr}}
+
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+
+    /* ===== Video grid (added) ===== */
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) {
+      .video-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    /* ============================== */
+
+    .shows-list{display:grid;gap:10px}
+    .show{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:#111214;border:1px solid var(--line);border-radius:14px;padding:14px}
+    .show .meta{display:flex;gap:12px;flex-wrap:wrap}
+    .pill{font-size:12px;color:#111827;background:var(--brand);border-radius:999px;padding:4px 10px;font-weight:700}
+    .btn-sm{padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:#1a1c20}
+    .btn-sm[disabled]{opacity:.55;cursor:not-allowed}
+
+    .gallery{display:grid;gap:10px;grid-template-columns:repeat(2,1fr)}
+    @media(min-width:700px){.gallery{grid-template-columns:repeat(4,1fr)}}
+    .gallery img{border-radius:12px}
+
+    footer{padding:54px 0;border-top:1px solid var(--line);color:var(--muted)}
+    .social{display:flex;gap:12px}
+    .social a{border:1px solid var(--line);padding:10px;border-radius:12px;background:#121316}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">On the Side</div>
+      <nav>
+        <a href="#photos">Photos</a>
+        <a href="#videos">Videos</a>
+        <a href="#shows">Shows</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="bg"></div>
+    <div class="shade"></div>
+    <div class="wrap inner">
+      <h1>On the Side</h1>
+      <p>Americana meets classic rock — straight from Sonoma County.
+      </p>
+      <div class="button-row">
+        <a class="btn" href="#videos">▶ Watch</a>
+        <a class="btn" href="#shows">📅 Upcoming Shows</a>
+        <a class="btn" href="#contact">✉ Book the Band</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos">
+    <div class="wrap">
+      <h2>Photos</h2>
+      <div class="gallery">
+        <img src="Undertheoaks.jpg" alt="On the Side under the oaks"/>
+        <img src="photo2.jpg" alt="Band close-up"/>
+        <img src="photo3.jpg" alt="Crowd at show"/>
+        <img src="photo4.jpg" alt="Stage performance"/>
+        <img src="photo5.jpg" alt="Instrument detail"/>
+        <img src="Steve.jpg" alt="Outdoor concert"/>
+        <img src="photo7.jpg" alt="Band rehearsal"/>
+        <img src="photo1.jpg" alt="Audience enjoying show"/>
+        
+      </div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <div class="wrap">
+      <h2>Videos</h2>
+      <p class="muted">Watch our band videos below.</p>
+
+      <div class="card" style="aspect-ratio:16/9; margin-bottom:24px;">
+        <video
+          style="width:100%;height:100%;border-radius:12px"
+          controls
+          poster="OnTheSide_thumbnail2.jpg">
+          <source src="OnTheSide.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="card" style="aspect-ratio:16/9">
+        <video
+          style="width:100%;height:100%;border-radius:12px"
+          controls
+          poster="video_thumbnail.jpg">
+          <source src="Band Compilation.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section id="shows">
+    <div class="wrap">
+      <h2>Upcoming Shows</h2>
+      <p class="muted" id="showsEmpty" style="display:none">More dates soon — stay tuned!</p>
+      <div class="shows-list" id="showsList"></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap grid grid-2">
+      <div>
+        <h2>Booking & Contact</h2>
+        <p class="muted">Want On the Side at your venue, winery, private event, or festival? Drop us a line.</p>
+        <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="card" action="/thank-you.html">
+          <!-- Required hidden inputs for Netlify -->
+          <input type="hidden" name="form-name" value="contact">
+          <p style="display:none;">
+            <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+          </p>
+
+          <input id="name" name="name" placeholder="Your name" required
+                 style="width:100%;margin-bottom:10px;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0f1013;color:var(--fg)">
+          <input id="email" name="email" type="email" placeholder="Email" required
+                 style="width:100%;margin-bottom:10px;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0f1013;color:var(--fg)">
+          <textarea id="msg" name="message" placeholder="Tell us about your event…" rows="5" required
+                    style="width:100%;margin-bottom:12px;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0f1013;color:var(--fg)"></textarea>
+
+          <button class="cta" type="submit">Send</button>
+        </form>
+
+      </div>
+      <div>
+        <h2>EPK</h2>
+        <div class="card">
+          <p>Download our one-sheet and media kit.</p>
+          <div class="button-row">
+            <a class="btn" href="#" download>One-Sheet (PDF)</a>
+            <a class="btn" href="#" download>Press Photos (ZIP)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+      <div>© <span id="year"></span> On the Side</div>
+      <div class="social">
+        <a href="https://instagram.com/" aria-label="Instagram" target="_blank" rel="noopener">IG</a>
+        <a href="https://youtube.com/" aria-label="YouTube" target="_blank" rel="noopener">YT</a>
+        <a href="mailto:booking@example.com" aria-label="Email">✉</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const SHOWS = [
+      {
+        date: '2025-12-13T19:00:00',
+        venue: 'Private Christmas Party',
+        city: 'Santa Rosa',
+        state: 'CA',
+        ticketUrl: '',
+        soldOut: false
+      },
+      {
+        date: '2026-03-13T17:00:00',
+        venue: 'Aqus Cafe',
+        city: 'Petaluma',
+        state: 'CA',
+        ticketUrl: '',
+        soldOut: false
+      }
+    ];
+    const fmt = (d) => new Intl.DateTimeFormat('en-US',{weekday:'short', month:'short', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit'}).format(new Date(d));
+
+    function renderShows(){
+      const list = document.getElementById('showsList');
+      const empty = document.getElementById('showsEmpty');
+      list.innerHTML = '';
+      const upcoming = SHOWS.filter(s => new Date(s.date) >= new Date()).sort((a,b)=> new Date(a.date)-new Date(b.date));
+      if(upcoming.length===0){ empty.style.display='block'; return; }
+      empty.style.display='none';
+      upcoming.forEach(s => {
+        const row = document.createElement('div');
+        row.className = 'show';
+        row.innerHTML = `
+          <div>
+            <div class="meta"><span class="pill">${fmt(s.date)}</span><span>${s.venue}</span><span>• ${[s.city,s.state].filter(Boolean).join(', ')}</span></div>
+          </div>
+          <div>
+            ${s.soldOut ? '<button class="btn-sm" disabled>Sold Out</button>' : (s.ticketUrl ? `<a class="btn-sm" href="${s.ticketUrl}" target="_blank" rel="noopener">Tickets</a>` : '')}
+          </div>`;
+        list.appendChild(row);
+      });
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    renderShows();
+
+    /*document.getElementById('contactForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      document.getElementById('thanks').style.display = 'block';
+      e.target.reset();
+    });*/
+  </script>
+</body>
+</html>

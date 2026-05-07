@@ -1,0 +1,6 @@
+*.mp4
+*.mov
+*.avi
+.env
+*.log
+.DS_Store
