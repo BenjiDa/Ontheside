@@ -274,6 +274,24 @@
   <script>
     const SHOWS = [
       {
+        date: '2026-09-10T17:00:00',
+        displayDate: 'Thu, Sep 10, 2026, 5:00 PM - 8:00 PM',
+        venue: "D'Argenzio Winery and Tasting Room",
+        city: 'Santa Rosa',
+        state: 'CA',
+        ticketUrl: '',
+        soldOut: false
+      },
+      {
+        date: '2026-10-31T00:00:00',
+        displayDate: 'Sat, Oct 31, 2026',
+        venue: 'Graton Town Square Halloween',
+        city: 'Graton',
+        state: 'CA',
+        ticketUrl: '',
+        soldOut: false
+      },
+      {
         date: '2025-12-13T19:00:00',
         venue: 'Private Christmas Party',
         city: 'Santa Rosa',
@@ -304,7 +322,7 @@
         row.className = 'show';
         row.innerHTML = `
           <div>
-            <div class="meta"><span class="pill">${fmt(s.date)}</span><span>${s.venue}</span><span>• ${[s.city,s.state].filter(Boolean).join(', ')}</span></div>
+            <div class="meta"><span class="pill">${s.displayDate || fmt(s.date)}</span><span>${s.venue}</span><span>• ${[s.city,s.state].filter(Boolean).join(', ')}</span></div>
           </div>
           <div>
             ${s.soldOut ? '<button class="btn-sm" disabled>Sold Out</button>' : (s.ticketUrl ? `<a class="btn-sm" href="${s.ticketUrl}" target="_blank" rel="noopener">Tickets</a>` : '')}
